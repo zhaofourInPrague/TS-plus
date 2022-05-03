@@ -1,8 +1,23 @@
-import React, { ReactElement, DOMElement, DetailedReactHTMLElement } from 'react';
+import React, { ReactElement, DOMElement, DetailedReactHTMLElement, FunctionComponentElement } from 'react';
 import ReactDOM from 'react-dom';
 
-// <h1>hello</h1>会变成下面 tsconfig.js 中jsx: react
-let element = React.createElement('h1', {className:'title'}, 'hello');
+interface Props {
+    className: string
+}
+interface State {
+    id: string
+}
+let props: Props = {className:'title'}
 
-// <h1>hello</h1>
+class Hello extends React.Component<Props, State> {
+    state = {id: 'aa'}
+    render(){
+        return React.createElement<Props, HTMLHeadingElement>('h1', props, 'hello1')
+    }
+}
+
+let element: ReactElement<Props> = (
+    React.createElement<Props>(Hello, props)
+)
+
 ReactDOM.render(element, document.getElementById('root'));
