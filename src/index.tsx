@@ -1,23 +1,12 @@
 import React, { ReactElement, DOMElement, DetailedReactHTMLElement, FunctionComponentElement } from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import Counter1 from './components/Counter1';
+import Counter2 from './components/Counter2';
 
-interface Props {
-    className: string
-}
-interface State {
-    id: string
-}
-let props: Props = {className:'title'}
+import store from './store';
 
-class Hello extends React.Component<Props, State> {
-    state = {id: 'aa'}
-    render(){
-        return React.createElement<Props, HTMLHeadingElement>('h1', props, 'hello1')
-    }
-}
-
-let element: ReactElement<Props> = (
-    React.createElement<Props>(Hello, props)
-)
-
-ReactDOM.render(element, document.getElementById('root'));
+ReactDOM.render(<Provider store = {store}>
+    <Counter1 />
+    <Counter2 />
+</Provider>, document.getElementById('root'));

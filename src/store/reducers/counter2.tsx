@@ -13,7 +13,7 @@ const initialState: Counter2State = {
 
 export default function(state: Counter2State = initialState, action: AnyAction): Counter2State {
     switch(action.type) {
-        case types.ADD1:
+        case types.ADD2:
             return {number: state.number + 1};
         default:
             return state;
